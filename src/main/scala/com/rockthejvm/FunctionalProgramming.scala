@@ -69,4 +69,54 @@ object FunctionalProgramming extends App{
   // you can chain applications to each other
   val allPairs = List(1,2,3).flatMap(number => List('a', 'b', 'c').map(letter => s"$number-$letter"))
   print(allPairs)
+
+  // for comprehensions
+  // for means for comprehension NOT for loops
+  val alternativePairs = for {
+    number <- List(1,2,3)
+    letter <- List('a', 'b', 'c')
+  } yield s"$number - $letter"
+    // this is equivalent to the allPairs value above using map and flatmap
+
+// collections
+  //lists
+    //head and tail are the fundamental operations of list
+  val aList = List(1,2,3,4,5)
+  val firstElement = aList.head
+  val theRest = aList.tail
+  val aPreparedList = 0 :: aList // return = List(0,1,2,3,4,5)
+  val aExtendedList = 0 +: aList :+ 6 // return = List(0,1,2,3,4,5,6)
+
+  //sequences
+  val aSequence : Seq[Int] = Seq(1,2,3) // Seq.apply(1,2,3)
+  val accessedElement = aSequence(1) // the element at index position 1 which is 2
+
+  //vectors
+    // fast Seq implementation
+  val aVector = Vector(1,2,3,4,5)
+
+  //sets
+    //do not allow duplicates
+  val aSet = Set(1,2,3,4,1,2,3) //return Set(1,2,3,4)
+  val setHas5 = aSet.contains(5) // return false contain method returns true or false
+  val anAddedSet = aSet + 5 //return Set(1,2,3,4,5)
+  val aRemovedSet = aSet - 3 // returns Set(1,2,4) as the 3 has now been removed
+
+  //ranges
+    //useful for iteration
+    //does not contain all the numbers between what the range implies but is acts as if it does
+  val aRange = 1 to 1000
+  val twoByTwo = aRange.map(x => 2 * x).toList // to =List converts a collection to a list, return List(2,4,6,8...998,1000)
+
+  //tuples
+    //group of values under the same value
+  val aTuple =("Bon Jovi", "Rock", 1982)
+
+
+  //maps
+  val aPhoneBook: Map[String, Int] = Map(
+    ("Robyn", 32435456),
+    ("Sarina", 23432435),
+    "Connie" -> 2345808 // this is equivalent to lines above
+  )
 }
